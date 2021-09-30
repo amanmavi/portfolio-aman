@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="panels">
+        <div class="panel panel1">
+            <p>Coding</p>
+            <p>for</p>
+            <p>Satisfaction</p>
+        </div>
+        <div class="panel panel2">
+            <p>Reading</p>
+            <p>makes</p>
+            <p>Wiser</p>
+        </div>
+        <div class="panel panel3">
+            <p>Cooking</p>
+            <p>gives</p>
+            <p>Joy</p>
+        </div>
+        <div class="panel panel4">
+            <p>Workout</p>
+            <p>makes</p>
+            <p>Stronger</p>
+        </div>
+        <div class="panel panel5">
+            <p>Travel</p>
+            <p>Provides</p>
+            <p>Purpose</p>
+        </div>
+    </div>
+    <style>
+        html {
+            box-sizing: border-box;
+            font-weight: 200;
+            background: #ffc600;
+            font-size: 20px;
+
+        }
+
+        body {
+            margin: 0;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .panels {
+            display: flex;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .panel {
+            background: #6B0F9C;
+            color: white;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            font-size: 20px;
+            background-size: cover;
+            background-position: center;
+            transition:
+                font-size 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                flex 0.7s cubic-bezier(0.61, -0.19, 0.7, -0.11),
+                background 0.2s ease;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .panel>* {
+            margin: 0;
+            width: 100%;
+            transition: transform 0.5s;
+            flex: 1 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .panel>*:first-child {
+            transform: translateY(-100%);
+        }
+
+        .panel.open-active>*:first-child {
+            transform: translateY(0);
+        }
+
+        .panel>*:last-child {
+            transform: translateY(100%);
+        }
+
+        .panel.open-active>*:last-child {
+            transform: translateY(0);
+        }
+
+        .panel p:nth-child(2) {
+            font-size: 3em;
+        }
+
+        .panel.open {
+            flex: 5;
+            font-size: 40px;
+        }
+
+        .panel1 {
+            background-image: url('./coding.jpg');
+        }
+
+        .panel2 {
+            background-image: url('./reading.jpg');
+        }
+
+        .panel3 {
+            background-image: url('./cooking.jpg');
+        }
+
+        .panel4 {
+            background-image: url('./exercise.jpg');
+        }
+
+        .panel5 {
+            background-image: url('./travel.jpg');
+        }
+
+
+
+        @media (min-width:576px) {
+            .panel {
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width:1200px) {
+            .panel {
+                font-size: 1rem;
+            }
+        }
+    </style>
+    <script>
+        const panels = document.querySelectorAll('.panel');
+
+        function toggleOpen() {
+            this.classList.toggle('open');
+        }
+
+        function toggleActive(e) {
+            if (e.propertyName.includes('flex')) {
+                this.classList.toggle('open-active');
+            }
+        }
+
+        panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+        panels.forEach(panel => panel.addEventListener('transitionend', toggleActive));
+    </script>
+</body>
+
+</html>
